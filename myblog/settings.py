@@ -25,7 +25,7 @@ SECRET_KEY = 'eqa^igh1rr6s6sa##*2yp1qz3$7q7sf!f*z1pvms9u)3xo1y*='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] #모든 사용자 허용
 
 
 # Application definition
@@ -103,15 +103,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr' #언어를 한국어로
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul' #시간을 대한민국/서울로
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False #데베 시간을 한국시간으로 설정
 
 
 # Static files (CSS, JavaScript, Images)
