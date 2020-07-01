@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'introduction',
+    'posts',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +120,7 @@ USE_TZ = False #데베 시간을 한국시간으로 설정
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'myblog', 'static')
+]
