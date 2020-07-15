@@ -6,5 +6,9 @@
     <h3>글 내용 : {{ post.content }} </h3><br>
     <h3>작성 시각 : {{ post.created_at }} </h3><br>
     <h3>수정 시각 : {{ post.updated_at }}</h3><br>
-    <a href="{% url 'posts:update' post.pk %}">수정하기</a>
+    {% if post.image %}
+        <img src="{{ post.image.url }}">
+    {% endif %}
+    <a href="{% url 'posts:update' post.pk %}" class="btn btn-warning">수정하기</a>
+    <a href="{% url 'posts:delete' post.pk %}" class="btn btn-danger">삭제하기</a>
 {% endblock %}
