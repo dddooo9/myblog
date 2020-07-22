@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'introduction',
     'posts',
+    'django.contrib.sites',#migrate할 때 필요
+    'allauth',
+    'allauth.account',#가입 계정 관리
+    'allauth.socialaccount',#소셜로 가입한 계정 관리
 ]
 
 MIDDLEWARE = [
@@ -127,3 +131,11 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'myblog', 'media')
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID=1
+LOGIN_REDIRECT_URL='/'
