@@ -42,10 +42,14 @@
         <div class="card">
             <div class="card-body">
                 {% if comment.writer.username == 'user' %}
-                <b>{{ comment.writer.last_name }}{{ comment.writer.first_name}}</b>
+                    <b>{{ comment.writer.last_name }}{{ comment.writer.first_name}}</b>
                 {% else %}
-                <b>{{ comment.writer }}</b>{% endif %} : {{ comment.content }}<br>
+                    <b>{{ comment.writer }}</b>{% endif %} : {{ comment.content }}<br>
                 <small>{{ comment.created_at }}</small>
+                {% if user == comment.writer %}
+                    <a href="{% url 'posts:update_comment' comment.id %}" class="btn btn-primary">수정하기</a>
+                    <a href="{% url 'posts:delete_comment' comment.id %}" class="btn btn-primary">삭제하기</a>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
