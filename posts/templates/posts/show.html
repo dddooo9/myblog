@@ -32,7 +32,11 @@
             {% endif %}
         </a>
         {% for like_user in post.like_user_set.all %}
-            <p>{{ like_user.username }}</p>
+            {% if like_user.username == 'user' %}
+                <p>{{ like_user.last_name }}{{ like_user.first_name}}</p>
+            {% else %}
+                <p>{{ like_user.username }}</p>
+            {% endif %}
         {% endfor %}
         {% if writer == post.writer %}
             <a href="{% url 'posts:update' post.pk %}" class="btn btn-warning">수정하기</a>
