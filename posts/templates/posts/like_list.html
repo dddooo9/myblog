@@ -4,31 +4,30 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="container">
-    <h1>글 목록입니다.</h1>
+    <h1> 좋아요한 글 목록입니다.</h1>
     <div class="row">
-        {% for post in posts %} <!--모든 포스트 출력-->
+        {% for like in likes %} <!--모든 포스트 출력-->
         <div class="col-md-4 col-12">
             <div class="card" style="width: 18rem; margin-top: 20px;">
                 <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.content }}</p>
-                    <p>작성 시간 : {{ post.created_at }}</p>
-                    <a href="{% url 'posts:post_like' post.id %}">
-                        {% if user in post.like_user_set.all %}
+                    <h5 class="card-title">{{ like.post.title }}</h5>
+                    <p class="card-text">{{ like.post.content }}</p>
+                    <p>작성 시간 : {{ like.post.created_at }}</p>
+                    <a href="{% url 'posts:post_like' like.post.id %}">
+                        {% if user in like.post.like_user_set.all %}
                             <i class="fas fa-heart"></i>
                         {% else %}
                             <i class="far fa-heart"></i>
                         {% endif %}
                     </a>
-                    <p>조회수 : {{ post.view_count }}</p>
-                    <a href="{% url 'posts:show' post.pk %}" class="btn btn-primary">상세보기</a>
+                    <p>조회수 : {{ like.post.view_count }}</p>
+                    <a href="{% url 'posts:show' like.post.pk %}" class="btn btn-primary">상세보기</a>
 
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
-    <a href="{% url 'posts:new' %}" class="btn btn-primary">새글쓰기</a>
 </div>
 {% else %}
     <h3>로그인 후 이용이 가능합니다.</h3>
