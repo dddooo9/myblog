@@ -1,19 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, Comment
 from django.contrib.auth.decorators import login_required
-
+from .forms import PostForm
 
 def new(request):
-    return render(request, 'posts/new.html')
-
-def create(request):
     if request.method == "POST":
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        writer=request.user
-        image=request.FILES.get('image')
-        Post.objects.create(title=title, content=content, writer=writer,image=image)
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save(user = request.user)
         return redirect('main')
+    else:
+        form = PostForm
+    return render(request, 'posts/new.html', {'form':form})
 
 def main(request):
     posts = Post.objects.all()
