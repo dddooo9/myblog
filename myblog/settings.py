@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',#가입 계정 관리
     'allauth.socialaccount',#소셜로 가입한 계정 관리
     'allauth.socialaccount.providers.google',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +141,5 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID=1
 LOGIN_REDIRECT_URL='/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
